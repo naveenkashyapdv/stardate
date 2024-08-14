@@ -68,4 +68,4 @@ Contributions are welcome! If you have any suggestions or improvements, feel fre
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/naveenkashyapdv)
+Made with ❤️ by [Venkat Naveen](https://github.com/naveenkashyapdv)
