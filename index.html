@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardate Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="star_trek_logo.png" alt="Star Trek Logo" class="logo">
+        <h1>Stardate Calculator</h1>
+        <form id="stardate-form">
+            <label for="date">Select a Date:</label><br>
+            <input type="date" id="date" name="date" required><br>
+            <button type="submit">Calculate Stardate</button>
+        </form>
+        <div id="stardate-result"></div>
+    </div>
+
+    <script>
+        document.getElementById('stardate-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const dateInput = document.getElementById('date').value;
+            if (dateInput) {
+                const dateObj = new Date(dateInput);
+                const stardate = calculateStardate(dateObj);
+                document.getElementById('stardate-result').innerHTML = '<h2>Calculated Stardate: ' + stardate + '</h2>';
+            }
+        });
+
+        function calculateStardate(dateObj) {
+            const baseYear = 2000;
+            const baseStardate = 10000.0;
+            const yearsDifference = dateObj.getFullYear() - baseYear;
+
+            let stardate = baseStardate + (yearsDifference * 1000);
+
+            const isLeapYear = (dateObj.getFullYear() % 4 === 0 && dateObj.getFullYear() % 100 !== 0) || (dateObj.getFullYear() % 400 === 0);
+            const daysInYear = isLeapYear ? 366 : 365;
+            const dayOfYear = Math.ceil((dateObj - new Date(dateObj.getFullYear(), 0, 1)) / 86400000);
+
+            const fractionalStardate = (dayOfYear / daysInYear) * 1000;
+
+            return (stardate + fractionalStardate).toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

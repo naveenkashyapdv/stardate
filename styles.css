@@ -1,0 +1,71 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #feda4a;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+label {
+    font-size: 1.2em;
+    color: #feda4a;
+}
+
+input[type="date"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #feda4a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #ffdd00;
+}
+
+.container {
+    padding: 20px;
+    max-width: 400px;
+}
+
+.logo {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#stardate-result {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #feda4a;
+}
