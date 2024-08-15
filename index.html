@@ -71,17 +71,25 @@
         function calculateDateFromStardate(stardate) {
             const baseYear = 2000;
             const baseStardate = 10000.0;
-            const yearsDifference = Math.floor((stardate - baseStardate) / 1000);
 
+            // Calculate the year based on stardate
+            const yearsDifference = Math.floor((stardate - baseStardate) / 1000);
             const year = baseYear + yearsDifference;
 
+            // Calculate the remaining fractional stardate
             const fractionalStardate = stardate - (baseStardate + yearsDifference * 1000);
+
+            // Determine if it's a leap year
             const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
             const daysInYear = isLeapYear ? 366 : 365;
 
+            // Calculate the day of the year from the fractional stardate
             const dayOfYear = Math.round((fractionalStardate / 1000) * daysInYear);
 
-            const date = new Date(year, 0, dayOfYear);
+            // Convert the day of the year into a date
+            const date = new Date(year, 0, 1);
+            date.setDate(dayOfYear);
+
             return date;
         }
     </script>
