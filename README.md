@@ -16,7 +16,7 @@ This project is a static website that calculates the stardate using JavaScript a
 
 ## Live Demo
 
-You can view the live demo of the Stardate Calculator [here](https://your-username.github.io/stardate-calculator/).
+You can view the live demo of the Stardate Calculator [🚀 Stardate](https://naveenkashyapdv.github.io/stardate/).
 
 ## Installation
 
@@ -69,5 +69,3 @@ Contributions are welcome! If you have any suggestions or improvements, feel fre
 ---
 
 Made with ❤️ by [Venkat Naveen](https://github.com/naveenkashyapdv)
-
-calculate stardate here [🚀 Stardate](https://naveenkashyapdv.github.io/stardate/)
