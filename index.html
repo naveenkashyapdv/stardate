@@ -12,12 +12,22 @@
     <div class="container">
         <img src="star_trek_logo.png" alt="Star Trek Logo" class="logo">
         <h1>Stardate Calculator</h1>
+        
+        <!-- Form to calculate stardate from date -->
         <form id="stardate-form">
             <label for="date">Select a Date:</label><br>
             <input type="date" id="date" name="date" required><br>
             <button type="submit">Calculate Stardate</button>
         </form>
         <div id="stardate-result"></div>
+
+        <!-- Form to calculate date from stardate -->
+        <form id="date-form">
+            <label for="stardate">Enter a Stardate:</label><br>
+            <input type="number" id="stardate" name="stardate" required step="0.01"><br>
+            <button type="submit">Calculate Date</button>
+        </form>
+        <div id="date-result"></div>
     </div>
 
     <script>
@@ -29,6 +39,16 @@
                 const dateObj = new Date(dateInput);
                 const stardate = calculateStardate(dateObj);
                 document.getElementById('stardate-result').innerHTML = '<h2>Calculated Stardate: ' + stardate + '</h2>';
+            }
+        });
+
+        document.getElementById('date-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const stardateInput = parseFloat(document.getElementById('stardate').value);
+            if (!isNaN(stardateInput)) {
+                const date = calculateDateFromStardate(stardateInput);
+                document.getElementById('date-result').innerHTML = '<h2>Corresponding Date: ' + date.toDateString() + '</h2>';
             }
         });
 
@@ -46,6 +66,23 @@
             const fractionalStardate = (dayOfYear / daysInYear) * 1000;
 
             return (stardate + fractionalStardate).toFixed(2);
+        }
+
+        function calculateDateFromStardate(stardate) {
+            const baseYear = 2000;
+            const baseStardate = 10000.0;
+            const yearsDifference = Math.floor((stardate - baseStardate) / 1000);
+
+            const year = baseYear + yearsDifference;
+
+            const fractionalStardate = stardate - (baseStardate + yearsDifference * 1000);
+            const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            const daysInYear = isLeapYear ? 366 : 365;
+
+            const dayOfYear = Math.round((fractionalStardate / 1000) * daysInYear);
+
+            const date = new Date(year, 0, dayOfYear);
+            return date;
         }
     </script>
 </body>
