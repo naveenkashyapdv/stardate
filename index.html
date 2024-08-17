@@ -55,10 +55,12 @@
         function calculateStardate(dateObj) {
             const referenceStardate = 1207.3;
             const referenceDate = new Date(Date.UTC(2256, 4, 11)); // May 11, 2256
-            const millisecondsPerStardate = 1000 * 60 * 60 * 24 * 0.036525; // Approximation for stardate increment
+            const millisecondsPerDay = 1000 * 60 * 60 * 24;
+            const stardatePerDay = 0.036525; // Stardate increment per day
 
             const differenceInMilliseconds = dateObj.getTime() - referenceDate.getTime();
-            const stardate = referenceStardate + (differenceInMilliseconds / millisecondsPerStardate);
+            const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
+            const stardate = referenceStardate + differenceInDays * stardatePerDay;
 
             return stardate.toFixed(1);
         }
@@ -66,9 +68,11 @@
         function calculateDateFromStardate(stardate) {
             const referenceStardate = 1207.3;
             const referenceDate = new Date(Date.UTC(2256, 4, 11)); // May 11, 2256
-            const millisecondsPerStardate = 1000 * 60 * 60 * 24 * 0.036525; // Approximation for stardate increment
+            const millisecondsPerDay = 1000 * 60 * 60 * 24;
+            const stardatePerDay = 0.036525; // Stardate increment per day
 
-            const differenceInMilliseconds = (stardate - referenceStardate) * millisecondsPerStardate;
+            const differenceInDays = (stardate - referenceStardate) / stardatePerDay;
+            const differenceInMilliseconds = differenceInDays * millisecondsPerDay;
             const date = new Date(referenceDate.getTime() + differenceInMilliseconds);
 
             return date;
