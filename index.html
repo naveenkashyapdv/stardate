@@ -71,11 +71,7 @@
             const differenceInMilliseconds = (stardate - referenceStardate) * millisecondsPerStardate;
             const date = new Date(referenceDate.getTime() + differenceInMilliseconds);
 
-            // Adjust for potential rounding errors
-            const adjustedDate = new Date(date);
-            adjustedDate.setUTCDate(date.getUTCDate() - 1);
-
-            return adjustedDate;
+            return date;
         }
     </script>
 </body>
